@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Contact List</title>
+  </head>
+  <body>
+    <h1>Contact List</h1>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Address</th>
+          <th>Profession</th>
+          <th>Telephone Number</th>
+          <th>Email</th>
+          <th>Gender</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for contact in contacts %}
+        <tr>
+          <td>{{ contact.name }}</td>
+          <td>{{ contact.address }}</td>
+          <td>{{ contact.profession }}</td>
+          <td>{{ contact.telnumber }}</td>
+          <td>{{ contact.email }}</td>
+          <td>{{ contact.gender }}</td>
+          <td>
+            <a href="{% url 'edit_contact' contact.id %}">Edit</a>
+            <a href="{% url 'delete_contact' contact.id %}">Delete</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <a href="{% url 'create_contact' %}">Create New Contact</a>
+  </body>
+</html>

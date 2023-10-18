@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Delete Contact</title>
+  </head>
+  <body>
+    <h1>Delete Contact</h1>
+
+    {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+          <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    
+
+    <form method="POST" action="{% url 'delete_contact' contact.id %}">
+      {% csrf_token %}
+      <input type="submit" value="Delete" />
+      <a href="{% url 'contact_list' %}">Cancel</a>
+    </form>
+  </body>
+</html>

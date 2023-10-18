@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Contact Form</title>
+  </head>
+  <body>
+    <h1>Contact Form</h1>
+    <form method="POST" action="{% url 'create_contact' %}">
+      {% csrf_token %}
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required /><br /><br />
+
+      <label for="address">Address:</label>
+      <textarea id="address" name="address" rows="4" required></textarea
+      ><br /><br />
+
+      <label for="profession">Profession:</label>
+      <input
+        type="text"
+        id="profession"
+        name="profession"
+        required
+      /><br /><br />
+
+      <label for="telnumber">Telephone Number:</label>
+      <input type="text" id="telnumber" name="telnumber" required /><br /><br />
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required /><br /><br />
+
+      <label for="gender">Gender:</label>
+      <select id="gender" name="gender">
+        <option value="none">None</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option></select
+      ><br /><br />
+
+      <label for="date_joined">Date Joined:</label>
+      <input
+        type="date"
+        id="date_joined"
+        name="date_joined"
+        required
+      /><br /><br />
+
+      <label for="date_expired">Date Expired:</label>
+      <input
+        type="date"
+        id="date_expired"
+        name="date_expired"
+        required
+      /><br /><br />
+      {% if messages %}
+      <ul class="messages">
+          {% for message in messages %}
+          <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+          {% endfor %}
+      </ul>
+      {% endif %}
+      
+      <input type="submit" value="Submit" />
+    </form>
+  </body>
+</html>
